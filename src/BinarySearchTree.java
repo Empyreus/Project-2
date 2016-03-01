@@ -25,8 +25,15 @@ public class BinarySearchTree {
     }
 
     public int getHeight() {
-        return root.getHeight();
+        return height(root);
     }
+    /**
+     * Return the height of node t, or -1, if null.
+     */
+    private int height(BSTNode t) {
+        return t == null ? -1 : t.height;
+    }
+    
     public void setHeight(){
         root.setHeight();
     }
