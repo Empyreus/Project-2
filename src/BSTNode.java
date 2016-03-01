@@ -1,4 +1,4 @@
-public class BSTNode {
+public class BSTNode<AnyType> {
     int element;
     BSTNode right;
     BSTNode left;

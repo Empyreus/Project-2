@@ -13,7 +13,7 @@ public class BSTPrinter
 {
     private static final int MAX_LEVELS = 6;
     
-    private BinarySearchTree<Integer> tree;  // the tree
+    private BinarySearchTree tree;  // the tree
     private int height;                      // its height
     
     // Powers of 2
@@ -30,10 +30,10 @@ public class BSTPrinter
      * Constructor
      * @param tree the tree to print.
      */
-    public TreePrinter(BinarySearchTree<Integer> tree)
+    public BSTPrinter(BinarySearchTree tree)
     {
         this.tree = tree;
-        this.height = tree.height();
+        this.height = tree.getHeight();
     }
     
     /**
@@ -45,8 +45,8 @@ public class BSTPrinter
         System.out.println(label);
 
         // Queue of nodes at this level.
-        BinaryNode<Integer> thisLevelNodes[] = 
-                (BinaryNode<Integer>[]) new BinaryNode[1];
+        BSTNode<Integer> thisLevelNodes[] = 
+                (BSTNode<Integer>[]) new BSTNode[1];
         
         int offset = POWERS_OF_2[(height+1)]-1;
         
@@ -90,16 +90,16 @@ public class BSTPrinter
      * @param levelNodes the current level of nodes
      */
     private void printData(int level, int offset, 
-                           BinaryNode<Integer> levelNodes[])
+                           BSTNode<Integer> levelNodes[])
     {
         printSpaces(offset);
         
         int k = POWERS_OF_2[level];
         for (int i = 0; i < k; i++) {
-            BinaryNode<Integer> node = levelNodes[i];
+            BSTNode<Integer> node = levelNodes[i];
             
             if (node != null) {
-                System.out.printf("%3d ", node.getData());
+                System.out.printf("%3d ", node.data());
             }
             else {
                 System.out.print("    ");
@@ -119,13 +119,13 @@ public class BSTPrinter
      * @param levelNodes the current level of nodes
      */
     private void printOutgoingPointers(int level, int offset, 
-                                       BinaryNode<Integer> levelNodes[])
+                                       BSTNode<Integer> levelNodes[])
     {
         printSpaces(offset);
         
         int k = POWERS_OF_2[level];
         for (int i = 0; i < k; i++) {
-            BinaryNode<Integer> node = levelNodes[i];
+            BSTNode<Integer> node = levelNodes[i];
             
             // Has left child: print /
             if ((node != null) && (node.getLeft() != null)) {
@@ -162,13 +162,13 @@ public class BSTPrinter
      * @param levelNodes the current level of nodes
      */
     private void printConnectingDashes(int level, int offset, 
-                                       BinaryNode<Integer> levelNodes[])
+                                       BSTNode<Integer> levelNodes[])
     {
         if (offset > 1) printSpaces(offset);
         
         int k = POWERS_OF_2[level];
         for (int i = 0; i < k; i++) {
-            BinaryNode<Integer> node = levelNodes[i];
+            BSTNode<Integer> node = levelNodes[i];
             
             // Has left child: print dashes
             if ((node != null) && (node.getLeft() != null)) {
@@ -206,13 +206,13 @@ public class BSTPrinter
      * @param levelNodes the current level of nodes
      */
     private void printIncomingPointers(int level, int offset,
-                                       BinaryNode<Integer> levelNodes[])
+                                       BSTNode<Integer> levelNodes[])
     {
         printSpaces(offset);
         
         int k = POWERS_OF_2[level];
         for (int i = 0; i < k; i++) {
-            BinaryNode<Integer> node = levelNodes[i];
+            BSTNode<Integer> node = levelNodes[i];
             
             // Left child: print /
             if ((node != null) && (node.getLeft() != null)) {
@@ -248,14 +248,14 @@ public class BSTPrinter
      * @param levelNodes the current level of nodes
      * @return the next level of nodes.
      */
-    private BinaryNode<Integer>[] nextLevel(int level, 
-                                            BinaryNode<Integer> levelNodes[])
+    private BSTNode<Integer>[] nextLevel(int level, 
+                                            BSTNode<Integer> levelNodes[])
     {
-        BinaryNode<Integer> nextLevel[] = 
-                (BinaryNode<Integer>[]) new BinaryNode[POWERS_OF_2[level+1]];
+        BSTNode<Integer> nextLevel[] = 
+                (BSTNode<Integer>[]) new BSTNode[POWERS_OF_2[level+1]];
         
         for (int i = 0; i < POWERS_OF_2[level]; i++) {
-            BinaryNode<Integer> node = levelNodes[i];
+            BSTNode<Integer> node = levelNodes[i];
             
             // Queue the left child nodes of each non-null parent node.
             nextLevel[2*i] = (node != null) && (node.getLeft() != null)
