@@ -1,14 +1,14 @@
 public class BSTNode<AnyType> {
     int element;
-    BSTNode right;
-    BSTNode left;
+    BSTNode<AnyType> right;
+    BSTNode<AnyType> left;
     int height;
 
     BSTNode(int x) {
         this(x, null, null);
     }
 
-    BSTNode(int x, BSTNode left, BSTNode right) {
+    BSTNode(int x, BSTNode<AnyType> left, BSTNode<AnyType> right) {
         element = x;
         this.left = left;
         this.right = right;
@@ -18,12 +18,12 @@ public class BSTNode<AnyType> {
         return height;
     }
 
-    public BSTNode getLeft() {
+    public BSTNode<AnyType> getLeft() {
         return left;
 
     }
 
-    public BSTNode getRight() {
+    public BSTNode<AnyType> getRight() {
         return right;
     }
 

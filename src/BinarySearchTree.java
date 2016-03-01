@@ -1,5 +1,5 @@
 public class BinarySearchTree {
-    BSTNode root;
+    BSTNode<Integer> root;
     boolean printFlag;
 
     public BinarySearchTree() {
@@ -7,7 +7,7 @@ public class BinarySearchTree {
         printFlag = false;
     }
 
-    public BSTNode getRoot() {
+    public BSTNode<Integer> getRoot() {
         return root;
     }
 
@@ -16,7 +16,7 @@ public class BinarySearchTree {
     }
 
     public void setRoot(int x) {
-        BSTNode temp = new BSTNode(x);
+        BSTNode<Integer> temp = new BSTNode<Integer>(x);
         root = temp;
     }
 
@@ -46,9 +46,9 @@ public class BinarySearchTree {
      *            the node that roots the subtree.
      * @return the new root of the subtree.
      */
-    private BSTNode insert(int x, BSTNode t) {
+    private BSTNode<Integer> insert(int x, BSTNode<Integer> t) {
         if (t == null)
-            return new BSTNode(x, null, null);
+            return new BSTNode<Integer>(x, null, null);
         if (x < t.element)
             t.left = insert(x, t.left);
         else if (x > t.element)
@@ -67,7 +67,7 @@ public class BinarySearchTree {
      *            the node that roots the subtree.
      * @return the new root of the subtree.
      */
-    private BSTNode remove(int x, BSTNode t) {
+    private BSTNode<Integer> remove(int x, BSTNode<Integer> t) {
         if (t == null)
             return t; // Item not found; do nothing
 
@@ -84,7 +84,7 @@ public class BinarySearchTree {
         return t;
     }
 
-    private boolean search(int x, BSTNode t) {
+    private boolean search(int x, BSTNode<Integer> t) {
         if (t == null)
             return false;
         if (x < t.element)
@@ -101,7 +101,7 @@ public class BinarySearchTree {
      *            the node that roots the subtree.
      * @return node containing the smallest item.
      */
-    private BSTNode findMin(BSTNode t) {
+    private BSTNode<Integer> findMin(BSTNode<Integer> t) {
         if (t == null)
             return null;
         else if (t.left == null)
