@@ -30,5 +30,9 @@ public class BSTNode<AnyType> {
     public int data() {
         return element;
     }
+    public void setHeight(){
+        height++;
+        
+    }
 
 }

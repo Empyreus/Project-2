@@ -27,6 +27,9 @@ public class BinarySearchTree {
     public int getHeight() {
         return root.getHeight();
     }
+    public void setHeight(){
+        root.setHeight();
+    }
 
     public void setPrintFlag(boolean x) {
         printFlag = x;

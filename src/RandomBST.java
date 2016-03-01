@@ -12,11 +12,12 @@ public class RandomBST {
      * Populate tree with 35 random integers range : 10 -99
      */
     public void populate() {
-        final int number = 35, min = 10, max = 99;
+        final int number = 5, min = 10, max = 99;
         final int mFactor = (max - min + 1);
-        for (int i = 0; i < number; i++) {
+        while (BST.getHeight() <= number) {
             int rn = (int) (Math.random() * mFactor + min);
             BST.insert(rn);
+            BST.setHeight();
             printTree("Tree after inserting random number: " + rn);
         }
     }
