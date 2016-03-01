@@ -9,7 +9,7 @@
  * @author Ron Mak
  *
  */
-public class TreePrinter 
+public class BSTPrinter 
 {
     private static final int MAX_LEVELS = 6;
     
