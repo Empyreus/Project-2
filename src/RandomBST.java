@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class RandomBST {
     BinarySearchTree BST;
@@ -22,9 +23,10 @@ public class RandomBST {
         }
     }
 
-    public void remove() {
-        while (BST.getHeight() >= 0) {
+    public void remove() throws InterruptedException {
+        while (BST.root != null) {
             BST.removeRoot();
+            //TimeUnit.SECONDS.sleep(1);
             printTree("Tree after deleting root:");
         }
     }
@@ -65,7 +67,7 @@ public class RandomBST {
         performSearch(searchNumbers);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         boolean printFlag = true;
         RandomBST ra = new RandomBST(printFlag);
         // Part 1

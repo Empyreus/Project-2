@@ -27,14 +27,15 @@ public class BinarySearchTree {
     public int getHeight() {
         return height(root);
     }
+
     /**
      * Return the height of node t, or -1, if null.
      */
-    private int height(BSTNode t) {
+    private int height(BSTNode<Integer> t) {
         return t == null ? -1 : t.height;
     }
-    
-    public void setHeight(){
+
+    public void setHeight() {
         root.setHeight();
     }
 
@@ -82,7 +83,7 @@ public class BinarySearchTree {
             return t; // Item not found; do nothing
 
         int compareResult = ((Integer) x).compareTo(t.element);
-        
+
         if (compareResult < 0)
             t.left = remove(x, t.left);
         else if (compareResult > 0)
