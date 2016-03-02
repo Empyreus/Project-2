@@ -77,13 +77,15 @@ public class BinarySearchTree {
      *            the node that roots the subtree.
      * @return the new root of the subtree.
      */
-    private BSTNode<Integer> remove(int x, BSTNode<Integer> t) {
+    private BSTNode<Integer> remove(Object x, BSTNode<Integer> t) {
         if (t == null)
             return t; // Item not found; do nothing
 
-        if (x < t.element)
+        int compareResult = ((Integer) x).compareTo(t.element);
+        
+        if (compareResult < 0)
             t.left = remove(x, t.left);
-        else if (x > t.element)
+        else if (compareResult > 0)
             t.right = remove(x, t.right);
         else if (t.left != null && t.right != null) // Two children
         {

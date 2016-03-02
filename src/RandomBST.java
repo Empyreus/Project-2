@@ -14,7 +14,7 @@ public class RandomBST {
     public void populate() {
         final int number = 5, min = 10, max = 99;
         final int mFactor = (max - min + 1);
-        while (BST.getHeight() < number) {
+        while (BST.getHeight() <= number) {
             int rn = (int) (Math.random() * mFactor + min);
             BST.insert(rn);
             BST.setHeight();
