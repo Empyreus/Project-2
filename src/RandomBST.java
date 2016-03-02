@@ -26,7 +26,7 @@ public class RandomBST {
     public void remove() throws InterruptedException {
         while (BST.root != null) {
             BST.removeRoot();
-            //TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(1);
             printTree("Tree after deleting root:");
         }
     }
